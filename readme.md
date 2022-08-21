@@ -9,6 +9,7 @@ An algorithm to standardise addresses, and then converting them to Plus Codes (G
 [TOC]
 
 #What is here?
+
 Here lies a bunch of codes that comprises the GNA Code parser. You can try them out at hipcoder.com.
 
 But more of interest is the parser, which standardises addresses of various formats (not counting typos), e.g "6 Argyle Street, 6 ARGYLE ST., 6 argyle street" etc into one common form.
@@ -19,22 +20,22 @@ The file of most interest would be addieparser.ccp which contains the parsing co
 
 Here's a very brief pseudocode of how the algorithm works.
 ```pseudocode
-		while(easyparser.hasTextToRead()){}
-				tryReadUnitNumber();
-				else tryReadLotNumber();
-				else tryReadFloorNumber();
-				else tryReadHouseNumber();
-				else tryReadStreetNameAndType();
-				else tryLocality();
-				else tryStateTerritory();
-				else tryPostCode();
-				
-				if(something was parsed)
-						try parse commas etc;
-				else
-						incomplete parse, which means bad.
-				
-		}
+	while(easyparser.hasTextToRead()){}
+		tryReadUnitNumber();
+		else tryReadLotNumber();
+		else tryReadFloorNumber();
+		else tryReadHouseNumber();
+		else tryReadStreetNameAndType();
+		else tryLocality();
+		else tryStateTerritory();
+		else tryPostCode();
+
+		if(something was parsed)
+   		try parse commas etc;
+		else
+			incomplete parse, which means bad.
+
+	}
 ```
 So by doing things this way, you can parse address components out of order. The element parser for postcode, state territory etc is relatively simple as well, but you just have to keep in mind the different possible abbreviations. That's stored in `street_abbrevs.strext` which should have an exhaustive list. That was taken from an australia post PDF.
 
