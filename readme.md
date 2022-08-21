@@ -2,12 +2,6 @@
 
 An algorithm to standardise addresses, and then converting them to Plus Codes (GNA Codes)
 
-**Table of Contents**
-
-[TOCM]
-
-[TOC]
-
 #What is here?
 
 Here lies a bunch of codes that comprises the GNA Code parser. You can try them out at hipcoder.com.
