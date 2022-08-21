@@ -39,7 +39,7 @@ Next, after parsing the address, you want to query from the GNAF database. Don't
 
 Side note: We've been using a hacky database system (it's basically a mmap) to store the address files. It works blazingly fast in our system, but after uploading to a cheap $5 linode instance it turns out it's not as fast as we wished..
 
-# #What is next
+## What is next
 
 An algorithm such as this can be used to standardise and cleanse addresses to a reasonable extent. However it won't do anything to ambiguous addresses such as "Corner of Urquhar St and Motwyn St", because it could point to any of the 4 corners.
 
