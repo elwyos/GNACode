@@ -1,0 +1,18 @@
+#!python
+#/////////////////////////////////////////////////////////////////
+Import('env')
+includepaths = [ '.', '/usr/include/freetype2', '/usr/include/SDL2', '/usr/include/node', '/usr/include/libpng12', '/usr/local/include/opencv4', '/usr/local/include']
+#/////////////////////////////////////////////////////////////////
+elccflags = '-m64 -ffunction-sections -fdata-sections  -Wuninitialized -Werror=uninitialized -Wreturn-type -Werror=return-type -fuse-ld=lld -Wno-overloaded-shift-op-parentheses -D__ROEV__ -pthread -Wno-deprecated-register -fPIC -ggdb -Wmacro-redefined '
+elcppflags = '-m64 -ffunction-sections -fdata-sections  -Wuninitialized -Werror=uninitialized -Wreturn-type -Werror=return-type -fuse-ld=lld -Wno-overloaded-shift-op-parentheses -D__ROEV__ -pthread -Wno-deprecated-register -fPIC -ggdb -Wmacro-redefined -std=c++17 '
+#/////////////////////////////////////////////////////////////////
+thefiles = ['site.cl.cpp',
+            'gnaf.cl.cpp',
+            'address.cl.cpp',
+            'main.cl.cpp',
+            'addieparser.cl.cpp'
+           ]
+#/////////////////////////////////////////////////////////////////
+moo = Object(thefiles, CPPPATH = includepaths, CCFLAGS = elccflags, CXXFLAGS = elcppflags, CC = env['CC'], CXX = env['CXX'])
+Return('moo')
+#/////////////////////////////////////////////////////////////////

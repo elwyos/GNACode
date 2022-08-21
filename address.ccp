@@ -1,0 +1,149 @@
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+#bodinc oust
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+AddieCompo/AddieCompo()
+   // nothing
+//////////////////////////////////////////////////////////////////////////////////////////
+AddieCompo/AddieCompo(const string& firststr, const string& secondstr)
+   
+   filled = true;
+   value = firststr;
+   postfix = secondstr;
+//////////////////////////////////////////////////////////////////////////////////////////
+AddieCompo/printFirstPart()
+   \if value.size()
+      oustoust.printSmartColored(value);
+   \else
+      \if valuenum != -1
+         \\/ [246] valuenum \
+         
+      oustoust.printSmartColored(firstvalpostfix);
+      
+      \if connector
+         \\/ [196] string(1, connector) \
+      
+      \if secvaluenum != -1
+         \\/ [246] secvaluenum \
+      
+      oustoust.printSmartColored(secvalpostfix);
+      
+      
+//////////////////////////////////////////////////////////////////////////////////////////
+AddieCompo/stringifyFirstPart() -> string
+   \if value.size()
+      return value;
+   
+   \else
+      string ret;
+      \if valuenum != -1
+         ret.append(__toString(valuenum));
+      
+      ret += firstvalpostfix;
+      
+      \if connector
+         ret.append(1, connector);
+      
+      \if secvaluenum != -1
+         ret += __toString(secvaluenum);
+      
+      ret += secvalpostfix;
+      
+      return ret;
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+Address/toStandardisedFormat() -> string
+   string ret;
+   
+   \if floorlevel
+      ret.append(floorlevel.postfix);
+      ret += " ";
+      \if floorlevel.valuenum != -1
+         ret.append(floorlevel.stringifyFirstPart());
+         ret += " ";
+
+   \if unitnumber
+      
+      ret += unitnumber.postfix + " ";
+      ret.append(unitnumber.stringifyFirstPart());
+      ret +=  " ";
+      
+   \if lot
+      ret += "lot " + lot.stringifyFirstPart() + " ";
+      
+   \if propnumber
+      ret += propnumber.stringifyFirstPart() + " ";
+      
+   \if streetname
+      ret += streetname.value + " ";
+      ret += streetname.postfixlong + " ";
+      
+   \if locality
+      ret += locality.value + " ";
+      
+   \if state
+      ret += __toUpper(state.value) + " ";
+      
+   \if postcode
+      ret += __toUpper(postcode.value);
+      
+   return ret;
+   
+//////////////////////////////////////////////////////////////////////////////////////////
+Address/print()
+
+      
+   \if floorlevel
+      \\/ [floorlevel.postfix] floorlevel.postfix " " \
+      \if floorlevel.valuenum != -1
+         floorlevel.printFirstPart();
+         \\/ " " \
+
+   \if unitnumber
+      \\/ [unitnumber.postfix] unitnumber.postfix " " \
+      unitnumber.printFirstPart();
+      \\/ " " \
+      
+   \if lot
+      \\/ [220] "lot " \
+      lot.printFirstPart();
+      \\/ " " \
+      
+   \if propnumber
+      \\/ [220] "[" \
+      propnumber.printFirstPart();
+      \\/ [220] "]" \
+      \\/ " " \
+      
+   \if streetname
+      \\/ [250] streetname.value " " \
+      \\/ [streetname.postfixlong] streetname.postfixlong " " \
+      
+   \if locality
+      croust.dtag(locality.value);
+      \\/ " " \
+      
+   \if state
+      croust.dtag(__toUpper(state.value));
+      \\/ " " \
+      
+   \if postcode
+      croust.dtag(postcode.value);
+      \\/ " " \
+      
+   
+   \\/
+   
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+

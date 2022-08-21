@@ -1,0 +1,6 @@
+\headstyle
+
+    :root {
+        --background-body: #000;
+     };
+
